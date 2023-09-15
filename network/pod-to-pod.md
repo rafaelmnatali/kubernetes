@@ -1,4 +1,14 @@
-# pod-to-pod
+# pod-to-pod communication
+
+## Deploy local environment
+
+```bash
+NAME                     READY   STATUS    RESTARTS   AGE   IP            NODE       NOMINATED NODE   READINESS GATES
+busybox-sleep            1/1     Running   0          32s   10.244.1.51   minikube   <none>           <none>
+nginx-6bfd886fb5-fvngf   1/1     Running   0          89s   10.244.1.50   minikube   <none>           <none>
+nginx-6bfd886fb5-n65xn   1/1     Running   0          89s   10.244.1.49   minikube   <none>           <none>
+nginx-6bfd886fb5-szz7q   1/1     Running   0          89s   10.244.1.48   minikube   <none>           <none>
+```
 
 Connect to the `busybox-sleep` Pod and try to connect to any of the `app` Pod.
 
