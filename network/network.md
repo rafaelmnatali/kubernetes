@@ -12,4 +12,3 @@ Related Content:
   - [Using the Pod IP address](./pod-to-pod.md#using-the-pod-ip-address)
   - [Using the Pod name](./pod-to-pod.md#using-the-pod-name)
   - [Acessing a Pod in another namespace](./pod-to-pod.md#acessing-a-pod-in-another-namespace)
-- [pod-to-service communication](./pod-to-service.md)
