@@ -1,5 +1,5 @@
 # Kubernetes
-Repository with documentation and exercises for k8s
+Repository with documentation and examples for k8s
 
 ## Network Model
 

@@ -8,7 +8,11 @@ Kubernetes imposes the following fundamental requirements on any networking impl
 - agents on a node (e.g. system daemons, kubelet) can communicate with all pods on that node
 
 Related Content:
-- [pod-to-pod communication](./pod-to-pod.md)
+
+- [Pod-to-Pod communication](./pod-to-pod.md)
   - [Using the Pod IP address](./pod-to-pod.md#using-the-pod-ip-address)
   - [Using the Pod name](./pod-to-pod.md#using-the-pod-name)
-  - [Acessing a Pod in another namespace](./pod-to-pod.md#acessing-a-pod-in-another-namespace)
+  - [Accessing a Pod in another namespace](./pod-to-pod.md#acessing-a-pod-in-another-namespace)
+- Pod-to-Service communication (WIP)
+- External-to-Service communication (WIP)
+- Network Policies (WIP)
