@@ -79,4 +79,4 @@ Using [Kubeshark](https://kubeshark.co), it's possible to have a visual represen
 
 ![Kubeshark - ClusterIP](./images/ks-clusterip.png)
 
-The `tmp-shell` Pod does DNS requests to resolve the address `nginx-service.default.svc.cluster.local` to their IP Address. After that it sends a `GET` to the Service in port 80 and then it receives the answer from `10.244.3.48`.
+The `tmp-shell` Pod does DNS requests to resolve the A/AAAA records for `nginx-service.default.svc.cluster.local`. After that it sends a `GET` to the Service in port 80 and then it receives the answer from `10.244.3.48`.
