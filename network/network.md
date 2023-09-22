@@ -13,6 +13,6 @@ Related Content:
   - [Using the Pod IP address](./pod-to-pod.md#using-the-pod-ip-address)
   - [Using the Pod name](./pod-to-pod.md#using-the-pod-name)
   - [Accessing a Pod in another namespace](./pod-to-pod.md#acessing-a-pod-in-another-namespace)
-- Pod-to-Service communication (WIP)
+- [Pod-to-Service communication](./pod-to-service.md)
 - External-to-Service communication (WIP)
 - Network Policies (WIP)
