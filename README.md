@@ -12,7 +12,7 @@ This section will explain:
   - [Using the Pod IP address](./network/pod-to-pod.md#using-the-pod-ip-address)
   - [Using the Pod name](./network/pod-to-pod.md#using-the-pod-name)
   - [Accessing a Pod in another namespace](./network/pod-to-pod.md#acessing-a-pod-in-another-namespace)
-- Pod-to-Service communication (WIP)
+- [Pod-to-Service communication](./network/pod-to-service.md)
 - External-to-Service communication (WIP)
 - Network Policies (WIP)
 

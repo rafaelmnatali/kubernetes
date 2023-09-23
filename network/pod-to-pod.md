@@ -9,7 +9,7 @@
 ## Deploy local environment
 
 ```bash
-kubectl apply -f ../pods/nginx-deployment.yaml
+kubectl apply -f ../manifests/nginx-deployment.yaml
 ```
 
 Retrieve the detailed information of each pod with the following command:
@@ -110,7 +110,7 @@ This type of request will follow the same principles we saw in the first two sec
 2. Deploy the `nginx` pods to the `example` namespace:
 
     ```bash
-    kubectl apply -f ../pods/nginx-deployment.yaml --namespace example
+    kubectl apply -f ../manifests/nginx-deployment.yaml --namespace example
     ```
 
 3. Retrieve the detailed information of each pod with the following command:
