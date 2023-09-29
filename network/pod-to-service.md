@@ -84,7 +84,7 @@ The `tmp-shell` Pod does DNS requests to resolve the A/AAAA records for `nginx-s
 
 ### Headless Service
 
-[Headless Service](https://kubernetes.io/docs/concepts/services-networking/service/#headless-services) is created by explicitly setting `ClusterIP` to `None` when creating the Service. That does not allocate an IP address or forward traffic. In my opinion, the main use case os for [Stateful](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/) applications, where the headless is responsible for the network identity of the Pods.
+[Headless Service](https://kubernetes.io/docs/concepts/services-networking/service/#headless-services) is created by explicitly setting `ClusterIP` to `None` when creating the Service. That does not allocate an IP address or forward traffic. In my opinion, the main use case is for [Stateful](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/) applications, where the headless is responsible for the network identity of the Pods.
 
 How is the IP discovery different from ClusterIP to Headless?
 
