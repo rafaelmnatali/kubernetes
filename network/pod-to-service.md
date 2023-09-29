@@ -5,6 +5,7 @@ A [Service](https://kubernetes.io/docs/concepts/services-networking/service/) se
 There are four [Kubernetes Service types](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types):
 
 - [ClusterIP](./pod-to-service.md#clusterip)
+  - [Headless Service](#headless-service)
 - NodePort
 - LoadBalancer
 - ExternalName
@@ -80,3 +81,58 @@ Using [Kubeshark](https://kubeshark.co), it's possible to have a visual represen
 ![Kubeshark - ClusterIP](./images/ks-clusterip.png)
 
 The `tmp-shell` Pod does DNS requests to resolve the A/AAAA records for `nginx-service.default.svc.cluster.local`. After that it sends a `GET` to the Service in port 80 and then it receives the answer from `10.244.3.48`.
+
+### Headless Service
+
+[Headless Service](https://kubernetes.io/docs/concepts/services-networking/service/#headless-services) is created by explicitly setting `ClusterIP` to `None` when creating the Service. That does not allocate an IP address or forward traffic. In my opinion, the main use case os for [Stateful](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/) applications, where the headless is responsible for the network identity of the Pods.
+
+How is the IP discovery different from ClusterIP to Headless?
+
+Make sure that you have the following manifests deployed:
+
+```bash
+kubectl apply -f ../manifests/nginx-deployment.yaml
+kubectl apply -f ../manifests/nginx-svc-headless.yaml
+kubectl get svc
+```
+
+Output:
+
+```bash
+NAME                     TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+kubernetes               ClusterIP   10.96.0.1        <none>        443/TCP   204d
+nginx-headless-service   ClusterIP   None             <none>        80/TCP    2s
+nginx-service            ClusterIP   10.110.110.219   <none>        80/TCP    7d6h
+```
+
+Use the [nicolaka/netshoot](https://hub.docker.com/r/nicolaka/netshoot) image to execute network validations.
+
+```bash
+kubectl run tmp-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash
+```
+
+Run [nslookup](https://www.geeksforgeeks.org/nslookup-command-in-linux-with-examples/) to query both services:
+
+```bash
+tmp-shell:~# nslookup nginx-service
+Server:         10.96.0.10
+Address:        10.96.0.10#53
+
+Name:   nginx-service.default.svc.cluster.local
+Address: 10.110.110.219
+```
+
+```bash
+tmp-shell:~# nslookup nginx-headless-service
+Server:         10.96.0.10
+Address:        10.96.0.10#53
+
+Name:   nginx-headless-service.default.svc.cluster.local
+Address: 10.244.3.46
+Name:   nginx-headless-service.default.svc.cluster.local
+Address: 10.244.3.47
+Name:   nginx-headless-service.default.svc.cluster.local
+Address: 10.244.3.48
+```
+
+In the first case, the ClusterIP returns its own IP address. The headless Service returns the IP address of each Pod.
