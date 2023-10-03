@@ -7,7 +7,7 @@ There are four [Kubernetes Service types](https://kubernetes.io/docs/concepts/se
 - [ClusterIP](./pod-to-service.md#clusterip)
   - [Headless Service](#headless-service)
 - [NodePort](#nodeport)
-- LoadBalancer
+- [LoadBalancer](#load-balancer)
 - ExternalName
 
 ## DNS
@@ -182,3 +182,37 @@ Example of NodePort:
 5. Try in your browser. The tunnel `59176`, directs the request to the NodePort on `32692`, and then to the Pod.
 
 ![nodeport-tunnel](./images/nodeport-tunnel.png)
+
+## Load Balancer
+
+A `LoadBalancer` service is a way to expose a service to requests from outside the cluster and balance the requests between the backend Pods.
+
+Here is an example of how to configure `LoadBalancer` on Minikube:
+
+1. Run the tunnel in a separate terminal
+
+   ```bash
+   minikube tunnel
+   ```
+
+2. Create a Kubernetes deployment
+
+   ```bash
+   kubectl create deployment hello-minikube-lb --replicas 3  --image=kicbase/echo-server:1.0
+   ```
+
+3. Create a Kubernetes service with type `LoadBalancer`
+
+   ```bash
+   kubectl expose deployment hello-minikube-lb --type=LoadBalancer --port=8080 
+   ```
+
+4. Check the external IP
+
+   ```bash
+   kubectl get svc hello-minikube-lb
+   NAME                TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+   hello-minikube-lb   LoadBalancer   10.109.49.90   127.0.0.1     8080:32714/TCP   19s
+   ```
+
+5. Try in your browser <http://127.0.0.1:8080>. If you keep refreshing or open new tabs, you will see that the requests go to different Pods.
