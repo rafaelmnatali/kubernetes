@@ -8,7 +8,7 @@ There are four [Kubernetes Service types](https://kubernetes.io/docs/concepts/se
   - [Headless Service](#headless-service)
 - [NodePort](#nodeport)
 - [LoadBalancer](#load-balancer)
-- ExternalName
+- [ExternalName](#externalname)
 
 ## DNS
 
@@ -216,3 +216,22 @@ Here is an example of how to configure `LoadBalancer` on Minikube:
    ```
 
 5. Try in your browser <http://127.0.0.1:8080>. If you keep refreshing or open new tabs, you will see that the requests go to different Pods.
+
+## ExternalName
+
+Services of type ExternalName map a Service to a DNS name, not to a typical selector such as my-service or cassandra. You specify these Services with the spec.externalName parameter.
+
+This Service definition, for example, maps the my-service Service in the prod namespace to my.database.example.com:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+  namespace: prod
+spec:
+  type: ExternalName
+  externalName: my.database.example.com
+```
+
+When looking up the host `my-service.prod.svc.cluster.local`, the cluster DNS Service returns a `CNAME` record with the value my.database.example.com. Accessing `my-service` works in the same way as other Services but with the crucial difference that redirection happens at the DNS level rather than via proxying or forwarding. Should you later decide to move your database into your cluster, you can start its Pods, add appropriate selectors or endpoints, and change the Service's `type`.
