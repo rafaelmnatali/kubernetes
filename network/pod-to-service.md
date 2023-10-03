@@ -14,7 +14,7 @@ There are four [Kubernetes Service types](https://kubernetes.io/docs/concepts/se
 
 Kubernetes creates [DNS records for Services](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services). You can contact Services with consistent DNS names instead of IP addresses.
 
-"Normal" (not headless) Services are assigned DNS A and/or AAAA records, depending on the IP family or families of the Service, with a name of the form `my-svc.my-namespace.svc.cluster-domain.example``. This resolves to the cluster IP of the Service.
+"Normal" (not headless) Services are assigned DNS A and/or AAAA records, depending on the IP family or families of the Service, with a name of the form `my-svc.my-namespace.svc.cluster-domain.example`. This resolves to the cluster IP of the Service.
 
 Headless Services (without a cluster IP) Services are also assigned DNS [A and/or AAAA records](https://en.wikipedia.org/wiki/List_of_DNS_record_types), with a name of the form `my-svc.my-namespace.svc.cluster-domain.example`. Unlike normal Services, this resolves to the set of IPs of all of the Pods selected by the Service. Clients are expected to consume the set or else use standard round-robin selection from the set.
 
