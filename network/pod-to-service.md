@@ -6,7 +6,7 @@ There are four [Kubernetes Service types](https://kubernetes.io/docs/concepts/se
 
 - [ClusterIP](./pod-to-service.md#clusterip)
   - [Headless Service](#headless-service)
-- NodePort
+- [NodePort](#nodeport)
 - LoadBalancer
 - ExternalName
 
@@ -136,3 +136,49 @@ Address: 10.244.3.48
 ```
 
 In the first case, the ClusterIP returns its own IP address. The headless Service returns the IP address of each Pod.
+
+## NodePort
+
+For a node port Service, Kubernetes additionally allocates a port (TCP, UDP or SCTP to match the protocol of the Service). Every node in the cluster configures itself to listen on that assigned port and to forward traffic to one of the ready endpoints associated with that Service. You'll be able to contact the `type: NodePort` Service, from outside the cluster, by connecting to any node using the appropriate protocol (for example: TCP), and the appropriate port (as assigned to that Service).
+
+The Kubernetes control plane allocates a port from a range specified by `--service-node-port-range` flag (default: 30000-32767).
+
+Example of NodePort:
+
+1. Create a Kubernetes deployment
+
+    ```bash
+    kubectl create deployment hello-minikube1 --image=kicbase/echo-server:1.0
+    ```
+
+2. Create a Kubernetes service type NodePort
+
+    ```bash
+    kubectl expose deployment hello-minikube1 --type=NodePort --port=8080
+    ```
+
+3. Check Node Port
+
+    ```bash
+    kubectl get svc 
+    NAME                     TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+    hello-minikube1          NodePort    10.98.219.195    <none>        8080:32692/TCP   24s
+    ```
+
+4. Run service tunnel (because I'm running on Minikube)
+
+    ```bash
+    minikube service hello-minikube1 --url
+    ```
+
+    Output:
+
+    ```bash
+    <http://127.0.0.1:59176>
+
+    ❗  Because you are using a Docker driver on darwin, the terminal needs to be open to run it.
+    ```
+
+5. Try in your browser. The tunnel `59176`, directs the request to the NodePort on `32692`, and then to the Pod.
+
+![nodeport-tunnel](./images/nodeport-tunnel.png)
