@@ -13,7 +13,7 @@ This section will explain:
   - [Using the Pod name](./network/pod-to-pod.md#using-the-pod-name)
   - [Accessing a Pod in another namespace](./network/pod-to-pod.md#acessing-a-pod-in-another-namespace)
 - [Pod-to-Service communication](./network/pod-to-service.md)
-- External-to-Service communication (WIP)
+- [Ingress / Ingress Controller](./network/ingress.md)
 - Network Policies (WIP)
 
 ## Contributing
