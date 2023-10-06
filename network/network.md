@@ -15,4 +15,4 @@ Related Content:
   - [Accessing a Pod in another namespace](./pod-to-pod.md#acessing-a-pod-in-another-namespace)
 - [Pod-to-Service communication](./pod-to-service.md)
 - [Ingress / Ingress Controller](./ingress.md)
-- Network Policies (WIP)
+- [Network Policies](./network-policy.md)
