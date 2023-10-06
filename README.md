@@ -14,7 +14,7 @@ This section will explain:
   - [Accessing a Pod in another namespace](./network/pod-to-pod.md#acessing-a-pod-in-another-namespace)
 - [Pod-to-Service communication](./network/pod-to-service.md)
 - [Ingress / Ingress Controller](./network/ingress.md)
-- Network Policies (WIP)
+- [Network Policies](./network/network-policy.md)
 
 ## Contributing
 
