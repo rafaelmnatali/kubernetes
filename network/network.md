@@ -16,3 +16,4 @@ Related Content:
 - [Pod-to-Service communication](./pod-to-service.md)
 - [Ingress / Ingress Controller](./ingress.md)
 - [Network Policies](./network-policy.md)
+- [Exercises](./exercise.md)

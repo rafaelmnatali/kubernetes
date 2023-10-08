@@ -15,6 +15,7 @@ This section will explain:
 - [Pod-to-Service communication](./network/pod-to-service.md)
 - [Ingress / Ingress Controller](./network/ingress.md)
 - [Network Policies](./network/network-policy.md)
+- [Exercises](./network/exercise.md)
 
 ## Contributing
 
