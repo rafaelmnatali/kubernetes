@@ -1,6 +1,10 @@
 # Kubernetes
 
-Repository with documentation and examples for k8s
+Repository with documentation and examples for K8s
+
+## Installing K8s with kubeadm
+
+[This tutorial](./k8s-install/README.md) demonstrates how to provision a Kubernetes cluster using `kubeadm` in a Linux machine.
 
 ## Network Model
 
