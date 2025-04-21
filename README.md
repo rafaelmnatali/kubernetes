@@ -6,6 +6,10 @@ Repository with documentation and examples for K8s
 
 [This tutorial](./k8s-install/README.md) demonstrates how to provision a Kubernetes cluster using `kubeadm` in a Linux machine.
 
+## Upgrading a K8s cluster installed with kubeadm
+
+[This tutorial](./k8s-upgrade/README.md) demonstrates how to upgrade a Kubernetes cluster originally provisoned using `kubeadm` in a Linux machine.
+
 ## Network Model
 
 The [Kubernetes Network Model examples](./network/network.md) you can see here are based on the [Kubernetes Documentation](https://kubernetes.io/docs/concepts/cluster-administration/networking/).
