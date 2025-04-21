@@ -36,10 +36,10 @@ This tutorial demonstrates how to provision a Kubernetes cluster using `kubeadm`
 
 This tutorial requires:
 
-* two (2) virtual machines running Ubuntu
-* 2 GiB of RAM per machine
-* 2 CPUs
-* Full network connectivity among all machines in the cluster
+- two (2) virtual machines running Ubuntu
+- 2 GiB of RAM per machine
+- 2 CPUs
+- Full network connectivity among all machines in the cluster
 
 The steps and commands presented here were tested on VMs using the following configuration:
 
@@ -181,7 +181,7 @@ Join the `worker` node to the cluster using the `join` command from the `kubeadm
 
 ```bash
 sudo kubeadm join <IP ADDRESS>:6443 --token <TOKEN> \
-	--discovery-token-ca-cert-hash sha256:<SHA-256>
+    --discovery-token-ca-cert-hash sha256:<SHA-256>
 ```
 
 ⚠️ Return to the Control Plane and attribute a label to the `worker` and confirm that the nodes are `Ready`:
