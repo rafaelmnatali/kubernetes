@@ -10,6 +10,10 @@ Repository with documentation and examples for K8s
 
 [This tutorial](./k8s-upgrade/README.md) demonstrates how to upgrade a Kubernetes cluster originally provisoned using `kubeadm` in a Linux machine.
 
+## Executing CIS Benchmark security scan
+
+[This tutorial](./cis-benchmarks/README.md) demonstartes how to check whether Kubernetes is deployed securely accordingly to industry standards.
+
 ## Network Model
 
 The [Kubernetes Network Model examples](./network/network.md) you can see here are based on the [Kubernetes Documentation](https://kubernetes.io/docs/concepts/cluster-administration/networking/).
